@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import ProductContext from "../store/ProductProvider";
 
 function Card() {
-  const { product } = useContext(ProductContext);
+  const { product,addToCart } = useContext(ProductContext);
 
   // State to track the hovered card
   const [hoveredCardIndex, setHoveredCardIndex] = useState(null);
@@ -46,7 +46,7 @@ function Card() {
                       : "opacity-0"
                   }`}
                 >
-                  <button className="btn btn-light mx-1">A</button>
+                  <button className="btn btn-light mx-1" onClick={()=>addToCart(e.id)}>A</button>
                   <button className="btn btn-light mx-1">H</button>
                   <button className="btn btn-light mx-1">V</button>
                 </div>

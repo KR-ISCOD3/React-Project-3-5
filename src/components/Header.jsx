@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { IoSearch } from "react-icons/io5";
 import { HiOutlineViewList } from "react-icons/hi";
 import { FaShoppingCart } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import ProductContext from "../store/ProductProvider";
 function Header() {
+  const {cart} =useContext(ProductContext);
   const [isLoggin, setIsloggin] = useState(false);
 
   return (
@@ -115,7 +117,7 @@ function Header() {
                       <button type="button" className="btn text-light border position-relative me-3 rounded-0">
                         <FaShoppingCart className="" />
                         <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                          99+
+                          {cart.length >= 0 ? cart.length: (0)}
                           <span className="visually-hidden">unread messages</span>
                         </span>
                       </button>
